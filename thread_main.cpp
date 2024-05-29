@@ -43,6 +43,7 @@ stats_t thread_main(my_uint_t thread_trials)
       }
    }
 
+   rval.count = thread_trials;
    rval.variance /= static_cast<long double>(thread_trials - 1);
 
    return rval;

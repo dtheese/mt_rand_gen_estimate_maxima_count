@@ -8,7 +8,7 @@ using namespace std;
 #include "fundamental_types.h"
 struct stats_t
 {
-   // TODO: Add count of data points
+   my_uint_t count{0};
    long double mean{0.0L};
    long double variance{0.0L};
 };

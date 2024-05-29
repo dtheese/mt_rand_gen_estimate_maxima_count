@@ -60,7 +60,7 @@ int main()
    for (const stats_t &stats : thread_results)
    {
       // TODO: Add any extra trials for the last thread
-      sizes.push_back(NUM_THREADS);
+      sizes.push_back(stats.count);
       variances.push_back(stats.variance);
       means.push_back(stats.mean);
    }
