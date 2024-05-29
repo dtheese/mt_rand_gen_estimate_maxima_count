@@ -14,7 +14,10 @@ const my_uint_t NUM_THREADS{
                               min(
                                     {
                                        MAX_HW_THREADS > 0 ? MAX_HW_THREADS : 1,
-                                       TRIALS / 2, // Ensure each thread has at least 2 trials
+
+                                       // Ensure each thread has at least two trials
+                                       TRIALS / 2,
+
                                        MAX_THREADS
                                     }
                                  )
