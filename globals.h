@@ -12,14 +12,6 @@ using namespace std;
 constexpr my_uint_t N{1'000'000};
 
 constexpr my_uint_t M{20};
-
-// TODO
-// TRIALS must be chosen such that TRIALS % NUM_THREADS == 0. Ensuring
-// that each thread conducts the same number of trials eases combining
-// per-thread statistics into overall statistics.
-//
-// This cannot be enforced at compile time, only at runtime, since
-// NUM_THREADS is not known at compile time.
 constexpr my_uint_t TRIALS{100'000'000};
 
 // By default, the lesser of the maximum number of threads the hardware

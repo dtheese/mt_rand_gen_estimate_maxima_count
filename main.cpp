@@ -15,28 +15,38 @@ int main()
 {
    vector<future<stats_t>> futures;
    vector<stats_t> thread_results{NUM_THREADS};
-
-   // TODO
-   // Ensure each thread will conduct the same number of trials. This eases
-   // combining of per-thread statistics into overall statistics.
-   assert(TRIALS % NUM_THREADS == 0);
+   my_uint_t thread_trials{TRIALS / NUM_THREADS};
+   my_uint_t last_thread_extra_trials{TRIALS % NUM_THREADS};
 
    // Ensure each thread conducts more than one trial. This is necessary since
    // one of the calculations each thread performs is a division by
    // (thread_trials - 1).
-   assert(TRIALS / NUM_THREADS > 1);
+   assert(thread_trials > 1);
 
    cout << endl;
-   cout << "N                : " << N << endl;
-   cout << "M                : " << M << endl;
-   cout << "Trials           : " << TRIALS << endl;
-   cout << "NUM_THREADS      : " << NUM_THREADS << endl;
-   cout << "Trials per thread: " << TRIALS / NUM_THREADS << endl;
-   // TODO: Print any extra trials for last thread
+   cout << "N                       : " << N << endl;
+   cout << "M                       : " << M << endl;
+   cout << "Trials                  : " << TRIALS << endl;
+   cout << "NUM_THREADS             : " << NUM_THREADS << endl;
+   cout << "Trials per thread       : " << thread_trials << endl;
+   cout << "Last thread extra trials: " << last_thread_extra_trials << endl;
    cout << endl;
 
    for (my_uint_t i{0}; i < NUM_THREADS; ++i)
-      futures.push_back(async(launch::async, thread_main, TRIALS / NUM_THREADS));
+   {
+      futures.push_back(
+                          async(
+                                  launch::async,
+                                  thread_main,
+                                  thread_trials +
+                                  (
+                                     i == NUM_THREADS - 1 ?
+                                     last_thread_extra_trials :
+                                     0
+                                  )
+                               )
+                       );
+   }
 
    for (my_uint_t i{0}; i < NUM_THREADS; ++i)
       thread_results[i] = futures[i].get();
@@ -59,7 +69,6 @@ int main()
 
    for (const stats_t &stats : thread_results)
    {
-      // TODO: Add any extra trials for the last thread
       sizes.push_back(stats.count);
       variances.push_back(stats.variance);
       means.push_back(stats.mean);
