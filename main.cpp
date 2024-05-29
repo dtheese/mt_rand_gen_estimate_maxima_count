@@ -16,6 +16,7 @@ int main()
    vector<future<stats_t>> futures;
    vector<stats_t> thread_results{NUM_THREADS};
 
+   // TODO
    // Ensure each thread will conduct the same number of trials. This eases
    // combining of per-thread statistics into overall statistics.
    assert(TRIALS % NUM_THREADS == 0);
@@ -31,6 +32,7 @@ int main()
    cout << "Trials           : " << TRIALS << endl;
    cout << "NUM_THREADS      : " << NUM_THREADS << endl;
    cout << "Trials per thread: " << TRIALS / NUM_THREADS << endl;
+   // TODO: Print any extra trials for last thread
    cout << endl;
 
    for (my_uint_t i{0}; i < NUM_THREADS; ++i)
@@ -57,6 +59,7 @@ int main()
 
    for (const stats_t &stats : thread_results)
    {
+      // TODO: Add any extra trials for the last thread
       sizes.push_back(NUM_THREADS);
       variances.push_back(stats.variance);
       means.push_back(stats.mean);

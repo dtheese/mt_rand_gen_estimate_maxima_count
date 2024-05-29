@@ -2,8 +2,10 @@
 #include "prng.h"
 #include "thread_main.h"
 
+// TODO: Add trial count back as parameter
 stats_t thread_main()
 {
+   // TODO
    // main() ensures TRIALS % NUM_THREADS == 0 before threads start
    // main() ensures that thread_trials > 1 since we later divide by (thread_trials - 1)
    const my_uint_t thread_trials{TRIALS / NUM_THREADS};
