@@ -36,7 +36,7 @@ int main()
    cout << endl;
 
    for (my_uint_t i{0}; i < NUM_THREADS; ++i)
-      futures.push_back(async(launch::async, thread_main));
+      futures.push_back(async(launch::async, thread_main, TRIALS / NUM_THREADS));
 
    for (my_uint_t i{0}; i < NUM_THREADS; ++i)
       thread_results[i] = futures[i].get();

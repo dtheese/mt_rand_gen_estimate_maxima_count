@@ -13,7 +13,6 @@ struct stats_t
    long double variance{0.0L};
 };
 
-//TODO: Add trial count back as parameter
-stats_t thread_main();
+stats_t thread_main(my_uint_t thread_trials);
 
 #endif
