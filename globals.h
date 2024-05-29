@@ -12,7 +12,7 @@ using namespace std;
 constexpr my_uint_t N{1'000'000};
 
 constexpr my_uint_t M{20};
-constexpr my_uint_t TRIALS{100'000'000};
+constexpr my_uint_t TRIALS{10'000'000'000};
 
 // By default, the lesser of the maximum number of threads the hardware
 // will support OR the maximum number of threads that can be used and
