@@ -8,10 +8,14 @@ using namespace std;
 
 #include "fundamental_types.h"
 
-// constexpr my_uint_t N{numeric_limits<my_uint_t>::max()};
-constexpr my_uint_t N{1'000'000};
+// N: The number of integers to make uniform random draws from
+// constexpr my_uint_t N{1'000'000};
+constexpr my_uint_t N{numeric_limits<my_uint_t>::max()};
 
+// M: The number of uniform random draws to make during each trial
 constexpr my_uint_t M{20};
+
+// TRIALS: The number of trials to run
 constexpr my_uint_t TRIALS{10'000'000'000};
 
 // By default, the lesser of the maximum number of threads the hardware
